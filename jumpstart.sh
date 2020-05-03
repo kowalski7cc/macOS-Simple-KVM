@@ -27,12 +27,15 @@ case $argument in
         ;;
     -s|--high-sierra)
         "$TOOLS/FetchMacOS/fetch.sh" -v 10.13 || exit 1;
+        echo High Sierra > version
         ;;
     -m|--mojave)
         "$TOOLS/FetchMacOS/fetch.sh" -v 10.14 || exit 1;
+        echo Mojave > version
         ;;
     -c|--catalina|*)
         "$TOOLS/FetchMacOS/fetch.sh" -v 10.15 || exit 1;
+        echo Catalina > version
         ;;
 esac
 
