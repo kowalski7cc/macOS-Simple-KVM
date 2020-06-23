@@ -16,6 +16,9 @@ version
 # Ignore future use data folder
 data/
 
+# Ignore download data
+
+tools/FetchMacOS/BaseSystem/
 
 # Created by https://www.gitignore.io/api/vim,code,linux,macos,emacs,windows,eclipse,sublimetext,intellij+all
 # Edit at https://www.gitignore.io/?templates=vim,code,linux,macos,emacs,windows,eclipse,sublimetext,intellij+all
