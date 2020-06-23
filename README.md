@@ -25,8 +25,7 @@ Run `jumpstart.sh` to download installation media for macOS (internet required).
 ```bash
 ./jumpstart.sh --mojave
 ```
-
-> Note: You can skip this if you already have `BaseSystem.img` downloaded. If you have `BaseSystem.dmg`, you will need to convert it with the `dmg2img` tool.
+> Note: You can skip this if you already have `BaseSystem.img` downloaded. If you have `BaseSystem.dmg`, you will need to convert it to a raw image, e.g. `qemu-img convert -O raw BaseSystem.dmg BaseSystem.img`.
 
 ## Step 2a
 
@@ -35,13 +34,9 @@ Create an empty hard disk using `qemu-img`, changing the name and size to prefer
 ```bash
 qemu-img create -f qcow2 MyDisk.qcow2 64G
 ```
+> Note: If you use a name other than MyDisk.qcow2, you will need to update `basic.sh` (e.g. `sed -i 's/MyDisk.qcow2/Master.qcow2/' basic.sh`)
 
-and add it to the end of `basic.sh`:
-
-```bash
-    -drive id=SystemDisk,if=none,file=MyDisk.qcow2 \
-    -device ide-hd,bus=sata.4,drive=SystemDisk \
-```
+> Note: If you're running on a headless system (such as on Cloud providers), you will need `-nographic` and `-vnc :0 -k en-us` for VNC support.
 
 > **Note**: If you're running on a headless system (such as on Cloud providers), you will need `-nographic` and `-vnc :0 -k en-us` for VNC support.
 
